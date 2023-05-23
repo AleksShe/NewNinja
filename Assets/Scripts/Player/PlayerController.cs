@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _jumpHeight;
     [SerializeField] private PlayerCollisions _playerCollisions;
     [SerializeField] private PlayerAnimations _playerAnimations;
+    [SerializeField] private Weapon _weapon;
     private float _moveSpeed;
     private float _rotateValue = 0.1f;
     private bool _canJump = true;
@@ -60,5 +61,10 @@ public class PlayerController : MonoBehaviour
 
         else if (_moveSpeed <= -_rotateValue)
             transform.rotation = Quaternion.Euler(0, 180, 0);
+    }
+    public void UseWeapon()
+    {
+        _weapon.ActivateWeapon();
+        _playerAnimations.PlayAttackAnimation();
     }
 }
