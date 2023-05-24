@@ -5,19 +5,21 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private bool _suriken;
     [SerializeField] private int _health;
     [SerializeField] private EnemyAnimations _enemyAnimations;
     private float _dieTimer = 0.6f;
-   
 
     public void GetDamage(int damage)
     {
+        if (_suriken)
+            return;
         _health -= damage;
         CheckHealth();
     }
-    public void CheckHealth()
+    private void CheckHealth()
     {
-        if (_health < 0)
+        if (_health <= 0)
             StartCoroutine(DestroyObject());
     }
     private IEnumerator DestroyObject()
@@ -30,7 +32,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(_dieTimer);
         Destroy(gameObject);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Weapon weapon))
             GetDamage(weapon.WeaponDamage);

@@ -6,7 +6,7 @@ public abstract class BaseEnemyMover : MonoBehaviour
 {
     protected bool IsPhysical;
     protected Rigidbody2D Rb;
-    protected void Start()
+    protected virtual void Start()
     {
         if(GetComponent<Rigidbody2D>()!= null)
         {

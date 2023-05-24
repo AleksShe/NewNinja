@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour
 {
     private Collider2D _collider;
     private bool _isEnabled;
-    private float _delayTimer = 0.3f;
+    private float _delayTimer = 0.5f;
 
     [HideInInspector] public int WeaponDamage { get; private set; } = 1;
 
