@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1527097550081923850
+--- !u!1 &3996365067997401432
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,68 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1527097550081923851}
+  - component: {fileID: 3996365067997401435}
+  - component: {fileID: 3996365067997401434}
+  - component: {fileID: 3996365067997401436}
+  - component: {fileID: 3996365067997401437}
   m_Layer: 0
-  m_Name: SpawnPos
+  m_Name: BossVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1527097550081923851
+--- !u!4 &3996365067997401435
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527097550081923850}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.533, y: -0.45, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1527097551298748209}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1527097550396814529
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1527097550396814530}
-  - component: {fileID: 1527097550396814533}
-  - component: {fileID: 1527097550396814532}
-  - component: {fileID: 1527097550396814531}
-  m_Layer: 0
-  m_Name: SurrikenEnemyVisual
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1527097550396814530
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527097550396814529}
+  m_GameObject: {fileID: 3996365067997401432}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
-  m_Father: {fileID: 1527097551298748209}
+  m_Father: {fileID: 3996365068777760560}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1527097550396814533
+--- !u!212 &3996365067997401434
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527097550396814529}
+  m_GameObject: {fileID: 3996365067997401432}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -102,29 +72,29 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 7e2d949e16be0b34aaa59b280af91b61, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 331125b4176224f498d39c6ce78a44e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.39, y: 0.27}
+  m_Size: {x: 0.7, y: 0.78}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1527097550396814532
+--- !u!95 &3996365067997401436
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527097550396814529}
+  m_GameObject: {fileID: 3996365067997401432}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6d75510d872347141bbf2ce1a99b3272, type: 2}
+  m_Controller: {fileID: 9100000, guid: 014e4513be3fec448b0e83cd28debf0e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -133,19 +103,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1527097550396814531
+--- !u!114 &3996365067997401437
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527097550396814529}
+  m_GameObject: {fileID: 3996365067997401432}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13a0d7a3bf547a84cb49c05982ddf427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1527097551298748208
+--- !u!1 &3996365068777760574
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,55 +123,54 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1527097551298748209}
-  - component: {fileID: 1527097551298748210}
-  - component: {fileID: 1527097551298748213}
-  - component: {fileID: 1527097551298748212}
-  - component: {fileID: 1527097551298748211}
+  - component: {fileID: 3996365068777760560}
+  - component: {fileID: 3996365068777760561}
+  - component: {fileID: 3996365068777760562}
+  - component: {fileID: 3996365068777760563}
+  - component: {fileID: 3996365068777760565}
   m_Layer: 0
-  m_Name: SurrikenEnemy
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1527097551298748209
+--- !u!4 &3996365068777760560
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527097551298748208}
+  m_GameObject: {fileID: 3996365068777760574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1527097550396814530}
-  - {fileID: 1527097550081923851}
+  - {fileID: 3996365067997401435}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1527097551298748210
+--- !u!114 &3996365068777760561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527097551298748208}
+  m_GameObject: {fileID: 3996365068777760574}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3e931ee7ae54c046800d7f974f2e2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _movingSide: 2
---- !u!50 &1527097551298748213
+--- !u!50 &3996365068777760562
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527097551298748208}
+  m_GameObject: {fileID: 3996365068777760574}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -215,20 +184,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &1527097551298748212
+--- !u!61 &3996365068777760563
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527097551298748208}
+  m_GameObject: {fileID: 3996365068777760574}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.041915417, y: 0.034294456}
+  m_Offset: {x: -0.03461343, y: 0.043266773}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -239,22 +208,21 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.91616917, y: 0.6570557}
+  m_Size: {x: 1.4499748, y: 2.713366}
   m_EdgeRadius: 0
---- !u!114 &1527097551298748211
+--- !u!114 &3996365068777760565
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527097551298748208}
+  m_GameObject: {fileID: 3996365068777760574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4e4f80656305cd4282b9b3fc63a18af, type: 3}
+  m_Script: {fileID: 11500000, guid: e843ee3a14dd0a342aa76c1551d3cfe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Suriken: 0
-  Health: 1
-  EnemyAnimations: {fileID: 1527097550396814531}
-  _surikenPrefub: {fileID: -4523197601998669340, guid: 033bfb5eda281414c84046bdd3d8d370, type: 3}
-  _spawnPos: {fileID: 1527097550081923851}
+  Health: 3
+  EnemyAnimations: {fileID: 3996365067997401437}
+  _sprite: {fileID: 3996365067997401434}

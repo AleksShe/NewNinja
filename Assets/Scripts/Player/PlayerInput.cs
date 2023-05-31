@@ -12,5 +12,10 @@ public class PlayerInput : MonoBehaviour
             _playerController.Jump();
         if(Input.GetKeyDown(KeyCode.L))
             _playerController.UseWeapon();
+        if (Input.GetKey(KeyCode.S))
+            _playerController.Sit(true);
+        if (Input.GetKeyUp(KeyCode.S))
+            _playerController.Sit(false);
+
     }
 }

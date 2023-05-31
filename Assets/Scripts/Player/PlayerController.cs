@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private float _moveSpeed;
     private float _rotateValue = 0.1f;
     private bool _canJump = true;
+    private bool _sit = false;
 
     private Rigidbody2D _rb;
     private void Awake()
@@ -30,7 +32,6 @@ public class PlayerController : MonoBehaviour
     }
     public void MovePlayer()
     {
-        
         _rb.velocity = new Vector2(_moveSpeed * playerSpeed, _rb.velocity.y);
     }
     public void Jump()
@@ -43,6 +44,8 @@ public class PlayerController : MonoBehaviour
     }
     public void SetMoveSpeed(float moiveSpeed)
     {
+        if (_sit)
+            return;
         _moveSpeed = moiveSpeed;
         if(_moveSpeed==0)
             _playerAnimations.PlayIdleAnimation();
@@ -66,5 +69,12 @@ public class PlayerController : MonoBehaviour
     {
         _weapon.ActivateWeapon();
         _playerAnimations.PlayAttackAnimation();
+    }
+    public void Sit(bool value)
+    {
+        _sit = value;
+        _playerCollisions.Sit(value);
+        if(value)
+        _playerAnimations.PlaySitAnimation();
     }
 }

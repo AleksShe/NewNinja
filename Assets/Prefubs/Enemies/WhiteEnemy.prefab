@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2908521464115964236}
   - component: {fileID: 2908521464115964238}
   m_Layer: 0
-  m_Name: flying2
+  m_Name: Flying2Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 2908521465508009259}
   - component: {fileID: 2908521465508009256}
   m_Layer: 0
-  m_Name: WhiteEnemyVisual
+  m_Name: WhiteEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -255,8 +255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63e92ad128f31f44a90d946d6f9e8e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 1
-  _enemyAnimations: {fileID: 2908521464115964238}
+  Suriken: 0
+  Health: 1
+  EnemyAnimations: {fileID: 2908521464115964238}
 --- !u!114 &2908521465508009258
 MonoBehaviour:
   m_ObjectHideFlags: 0

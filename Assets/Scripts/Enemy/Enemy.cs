@@ -5,31 +5,32 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private bool _suriken;
-    [SerializeField] private int _health;
-    [SerializeField] private EnemyAnimations _enemyAnimations;
-    private float _dieTimer = 0.6f;
+    [SerializeField] protected bool Suriken;
+    [SerializeField] protected int Health;
+    [SerializeField] protected EnemyAnimations EnemyAnimations;
+
+    protected float DieTimer = 0.6f;
 
     public void GetDamage(int damage)
     {
-        if (_suriken)
+        if (Suriken)
             return;
-        _health -= damage;
+        Health -= damage;
         CheckHealth();
     }
-    private void CheckHealth()
+    protected virtual void CheckHealth()
     {
-        if (_health <= 0)
+        if (Health <= 0)
             StartCoroutine(DestroyObject());
     }
-    private IEnumerator DestroyObject()
+    protected IEnumerator DestroyObject()
     {
-        _enemyAnimations.PlayDieAnimation();
+        EnemyAnimations.PlayDieAnimation();
         if (GetComponent<Collider2D>() != null)
             GetComponent<Collider2D>().enabled = false;
         if (GetComponent<Rigidbody2D>() != null)
             GetComponent<Rigidbody2D>().isKinematic = true;
-        yield return new WaitForSeconds(_dieTimer);
+        yield return new WaitForSeconds(DieTimer);
         Destroy(gameObject);
     }
     protected void OnTriggerEnter2D(Collider2D collision)
@@ -37,4 +38,5 @@ public class Enemy : MonoBehaviour
         if (collision.TryGetComponent(out Weapon weapon))
             GetDamage(weapon.WeaponDamage);
     }
+    
 }

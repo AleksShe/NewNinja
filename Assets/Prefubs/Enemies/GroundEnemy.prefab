@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63e92ad128f31f44a90d946d6f9e8e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _suriken: 0
-  _health: 1
-  _enemyAnimations: {fileID: 477546226204060860}
+  Suriken: 0
+  Health: 1
+  EnemyAnimations: {fileID: 477546226204060860}
 --- !u!50 &477546225705818064
 Rigidbody2D:
   serializedVersion: 4
