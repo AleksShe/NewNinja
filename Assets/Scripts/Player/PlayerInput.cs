@@ -10,12 +10,11 @@ public class PlayerInput : MonoBehaviour
         _playerController.SetMoveSpeed(Input.GetAxis("Horizontal"));
         if (Input.GetKeyDown(KeyCode.Space))
             _playerController.Jump();
-        if(Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L))
             _playerController.UseWeapon();
         if (Input.GetKey(KeyCode.S))
             _playerController.Sit(true);
         if (Input.GetKeyUp(KeyCode.S))
             _playerController.Sit(false);
-
     }
 }

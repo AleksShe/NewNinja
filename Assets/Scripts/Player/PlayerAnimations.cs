@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimations : MonoBehaviour
 {
+    [SerializeField] private PlayerController _playerController;
     private Animator _animator;
     private const string IDLE_STATE = "Idle";
     private const string RUN_STATE = "Run";
@@ -22,47 +23,68 @@ public class PlayerAnimations : MonoBehaviour
     {
         _animator= GetComponent<Animator>();
     }
-    public void PlayIdleAnimation()
+    private void Update()
+    {
+        if (_playerController.CurrentState == PlayerState.Idle)
+            PlayIdleAnimation();
+        else if (_playerController.CurrentState == PlayerState.Move)
+            PlayMoveAnimation();
+        else if (_playerController.CurrentState == PlayerState.Sit)
+            PlaySitAnimation();
+        else if (_playerController.CurrentState == PlayerState.Attack)
+            PlayAttackAnimation();
+        else if (_playerController.CurrentState == PlayerState.TakeDamage)
+            PlayTakeDamageAnimation();
+        else if (_playerController.CurrentState == PlayerState.Jump)
+            PlayJumpAnimation();
+        else if (_playerController.CurrentState == PlayerState.SitAttack)
+            PlaySitAttackAnimation();
+        else if (_playerController.CurrentState == PlayerState.BonusAttack)
+            PlayBonusAnimation();
+        else if (_playerController.CurrentState == PlayerState.SitBonusAttack)
+            PlaySitBonusWeaponAnimation();
+    }
+    private void PlayIdleAnimation()
     {
         _animator.SetTrigger(IDLE_STATE);
     }
-    public void PlayRunAnimation()
+    private void PlayMoveAnimation()
     {
         _animator.SetTrigger(RUN_STATE);
     }
-    public void PlayJumpAnimation()
+    private void PlayJumpAnimation()
     {
         _animator.SetTrigger(JUMP_STATE);
     }
-    public void PlayFlyAnimation()
+    private void PlayFlyAnimation()
     {
         _animator.SetTrigger(FLY_STATE);
     }
-    public void PlayAttackAnimation()
+    private void PlayAttackAnimation()
     {
         _animator.SetTrigger(ATTACK_STATE);
     }
-    public void PlayBonusAnimation()
+    private void PlayBonusAnimation()
     {
         _animator.SetTrigger(BONUS_STATE);
     }
-    public void PlaySitAnimation()
+    private void PlaySitAnimation()
     {
         _animator.SetTrigger(SIT_STATE);
     }
-    public void PlaySitAttackAnimation()
+    private void PlaySitAttackAnimation()
     {
         _animator.SetTrigger(SIT_ATTACK_STATE);
     }
-    public void PlayBonusWeaponAnimation()
+    private void PlayBonusWeaponAnimation()
     {
         _animator.SetTrigger(BONUS_WEAPON_STATE);
     }
-    public void PlaySitBonusWeaponAnimation()
+    private void PlaySitBonusWeaponAnimation()
     {
         _animator.SetTrigger(SIT_BONUS_WEAPON_STATE);
     }
-    public void PlayHitAnimation()
+    private void PlayTakeDamageAnimation()
     {
         _animator.SetTrigger(HIT_STATE);
     }

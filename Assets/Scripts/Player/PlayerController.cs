@@ -1,7 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+public enum PlayerState
+{
+    Idle,
+    Move,
+    Sit,
+    Attack,
+    BonusAttack,
+    TakeDamage,
+    Jump,
+    SitAttack,
+    SitBonusAttack,
+}
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -9,8 +20,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerSpeed;
     [SerializeField] private float _jumpHeight;
     [SerializeField] private PlayerCollisions _playerCollisions;
-    [SerializeField] private PlayerAnimations _playerAnimations;
-    [SerializeField] private Weapon _weapon;
+    [SerializeField] private WeaponHolder _weapon;
+    public PlayerState CurrentState => _currentState;
+    private PlayerState _currentState;
     private float _moveSpeed;
     private float _rotateValue = 0.1f;
     private bool _canJump = true;
@@ -32,13 +44,13 @@ public class PlayerController : MonoBehaviour
     }
     public void MovePlayer()
     {
-        _rb.velocity = new Vector2(_moveSpeed * playerSpeed, _rb.velocity.y);
+        _rb.velocity = new Vector2(_moveSpeed * playerSpeed, _rb.velocity.y);          
     }
     public void Jump()
     {
         if (!_canJump)
             return;
-        _playerAnimations.PlayJumpAnimation();
+        _currentState = PlayerState.Jump;
         _rb.AddForce(transform.up * _jumpHeight, ForceMode2D.Impulse);
         _canJump = false;
     }
@@ -47,10 +59,10 @@ public class PlayerController : MonoBehaviour
         if (_sit)
             return;
         _moveSpeed = moiveSpeed;
-        if(_moveSpeed==0)
-            _playerAnimations.PlayIdleAnimation();
-        else 
-            _playerAnimations.PlayRunAnimation();
+        if (_moveSpeed == 0)
+            _currentState = PlayerState.Idle;
+        else
+            _currentState = PlayerState.Move;
     }
     private void OnAllowJump()
     {
@@ -67,14 +79,23 @@ public class PlayerController : MonoBehaviour
     }
     public void UseWeapon()
     {
+        if (_sit && _weapon.WeaponState ==WeaponState.Base)
+            _currentState = PlayerState.SitAttack;
+        else if (_sit && _weapon.WeaponState == WeaponState.Bonus)
+            _currentState = PlayerState.SitBonusAttack;
+        else if(!_sit && _weapon.WeaponState == WeaponState.Base)
+            _currentState = PlayerState.Attack;
+        else if (!_sit && _weapon.WeaponState == WeaponState.Bonus)
+            _currentState = PlayerState.BonusAttack;
         _weapon.ActivateWeapon();
-        _playerAnimations.PlayAttackAnimation();
     }
     public void Sit(bool value)
     {
         _sit = value;
         _playerCollisions.Sit(value);
-        if(value)
-        _playerAnimations.PlaySitAnimation();
+        if (value && !_weapon.WeaponStatus)
+            _currentState = PlayerState.Sit;
+        else if(value && _weapon.WeaponStatus)
+            _currentState = PlayerState.SitAttack;
     }
 }
