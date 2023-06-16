@@ -25,6 +25,7 @@ public class PlayerAnimations : MonoBehaviour
     }
     private void Update()
     {
+       
         if (_playerController.CurrentState == PlayerState.Idle)
             PlayIdleAnimation();
         else if (_playerController.CurrentState == PlayerState.Move)

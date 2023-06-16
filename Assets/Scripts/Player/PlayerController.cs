@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private PlayerState _currentState;
     private float _moveSpeed;
     private float _rotateValue = 0.1f;
+    private float _pushForce = 10;
     private bool _canJump = true;
     private bool _sit = false;
 
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _playerCollisions.OnGroundTouched += OnAllowJump;
+        _playerCollisions.OnLavaTouched += OnPushPlayer;
     }
     private void Update()
     {
@@ -44,7 +46,7 @@ public class PlayerController : MonoBehaviour
     }
     public void MovePlayer()
     {
-        _rb.velocity = new Vector2(_moveSpeed * playerSpeed, _rb.velocity.y);          
+        _rb.velocity = new Vector2(_moveSpeed * playerSpeed, _rb.velocity.y);
     }
     public void Jump()
     {
@@ -68,6 +70,10 @@ public class PlayerController : MonoBehaviour
     {
         _canJump = true;
     }
+    private void OnPushPlayer()
+    {
+        _rb.AddForce(transform.up * _pushForce, ForceMode2D.Impulse);
+    }
     private void Flip()
     {
         if (_moveSpeed >= _rotateValue)
@@ -79,11 +85,11 @@ public class PlayerController : MonoBehaviour
     }
     public void UseWeapon()
     {
-        if (_sit && _weapon.WeaponState ==WeaponState.Base)
+        if (_sit && _weapon.WeaponState == WeaponState.Base)
             _currentState = PlayerState.SitAttack;
         else if (_sit && _weapon.WeaponState == WeaponState.Bonus)
             _currentState = PlayerState.SitBonusAttack;
-        else if(!_sit && _weapon.WeaponState == WeaponState.Base)
+        else if (!_sit && _weapon.WeaponState == WeaponState.Base)
             _currentState = PlayerState.Attack;
         else if (!_sit && _weapon.WeaponState == WeaponState.Bonus)
             _currentState = PlayerState.BonusAttack;
@@ -93,9 +99,12 @@ public class PlayerController : MonoBehaviour
     {
         _sit = value;
         _playerCollisions.Sit(value);
+
         if (value && !_weapon.WeaponStatus)
             _currentState = PlayerState.Sit;
-        else if(value && _weapon.WeaponStatus)
+        else if (value && _weapon.WeaponStatus && _weapon.WeaponState == WeaponState.Base)
             _currentState = PlayerState.SitAttack;
+        else if (value && _weapon.WeaponStatus && _weapon.WeaponState == WeaponState.Bonus)
+            _currentState = PlayerState.SitBonusAttack;
     }
 }
